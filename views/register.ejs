@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <%- include('partials/bootstrapLink.ejs') %>
+    <style>
+        .full-height {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center 75%-height">
+        <p>
+
+
+        </p>
+        <h1 id="myHeading" class="text-center">where we flying today?</h1>
+<p>
+
+
+
+
+</p>
+<div class="w-100 text-center">
+    <table id="myTable" class="table table-success table-striped w-auto mx-auto">
+        <tr>
+            <th>
+                airline company
+            </th>
+            <th>
+                origin country
+            </th>
+            <th>
+                destination country
+            </th>
+            <th>
+                date
+            </th>
+            <th>
+                link
+            </th>
+            <% if(locals.isAdmin){ %>
+            <th>
+                link
+            </th>
+            <% } %>
+        </tr>
+        <% if(flights.length> 0){ %>
+           <% for (const flihght of flights) { %>
+            <tr>
+                <td>
+                    <%= flihght.name %>
+                </td>
+                <td>
+                    <%= flihght.origin_country %>
+                </td>
+                <td>
+                    <%= flihght.destination_country %>
+                </td>
+                <td>
+                    <%= flihght.departure_time %>
+                </td>
+                <% if(locals.isAdmin){ %>
+                <td>
+                    <a href="flight/<%= flihght.id %>">redirect</a>
+                </td>
+                <% } %>
+                <td>
+                    <a class="btn btn-primary" href="https://www.youtube.com/watch?v=ijp0ac88wS8" role="button">lets fly</a>
+                </td>
+            </tr>
+           
+           <% } %>
+            <% } %>
+
+               
+
+    </table>
+</div>
+</body>
+
+</html>
